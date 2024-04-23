@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 
-# why are u not working
+# yey github works =)
 
 class App(tk.Frame):
     def __init__(self, master=None):
