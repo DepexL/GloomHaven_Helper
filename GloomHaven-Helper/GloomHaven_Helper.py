@@ -1,3 +1,10 @@
+from textwrap import fill
+import tkinter
+from tkinter import font
+from turtle import width
+from customtkinter import*
+from PIL import Image
+
 class PlayerTracker:
     _instance = None
 
@@ -72,6 +79,62 @@ print("Player1 characters:", player1_characters)
 
 player_tracker.remove_character("Player1", "Demolitionist")
 print("Player1 characters:", player1_characters)
+
+# GUI Section -------------------------------------------------------------------------
+
+app = CTk()
+app.geometry("1200x800")
+app.title("GloomHaven-Helper")
+app.resizable(width=False, height=False)
+
+set_appearance_mode("dark")
+
+# Starting Page
+project_logo = CTkImage(dark_image=Image.open("gloomhaven-logo.png"), size=(1000, 350))
+logo_label = CTkLabel(app, image=project_logo, text="")
+logo_label.place(relx=0.5, rely=0.25, anchor="center")
+
+frame_1 = CTkFrame(master=app, fg_color="#e5d8ad", height=250, width=750, border_color="#e5aaa7", border_width=2)
+frame_1.pack(expand=True, fill="x", pady=200, padx=30, anchor="s")
+
+frame_2 = CTkFrame(master=frame_1, fg_color="#e5d8ad")
+frame_2.pack(side=TOP, expand=False, pady=10, padx=30)
+
+# Garamond
+desc_label = CTkLabel(master=frame_2, font=("Baskerville Old Face", 17, "bold"), text="Hello and welcome to gloomhaven helper. This app is intended to help you on your adventures by removing the need for character sheets", text_color="black")
+desc_label.pack(anchor="s", expand=True, pady=10, padx= 10)
+
+frame_3 = CTkFrame(master=frame_1, fg_color="#e5d8ad")
+frame_3.pack(side=BOTTOM, expand=False, pady=10, padx=10)
+
+def click_NewGame():
+    print("new progress has been pressed")
+    
+def click_LoadGame():
+    print("Load progress has been pressed")
+    
+def click_QuitGame():
+    print("Quit App Has Been pressed")
+    app.quit()
+    
+    
+
+New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="New Progress", command=click_NewGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
+
+New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="Load Progress", command=click_LoadGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
+
+New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="Quit App", command=click_QuitGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=20, padx=30)
+
+
+
+app.mainloop()
+
+
+
+
 
 
 
