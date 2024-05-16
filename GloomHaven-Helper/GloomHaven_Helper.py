@@ -1,9 +1,12 @@
-from textwrap import fill
+﻿from textwrap import fill
 import tkinter
 from tkinter import font
 from turtle import width
 from customtkinter import*
 from PIL import Image
+import customtkinter
+
+# Žaidėjų ir žmogeliukų kūrimas
 
 class PlayerTracker:
     _instance = None
@@ -53,7 +56,7 @@ class Character_Creator:
         self.Skills.append(skill_name)
 
     
-
+# Klasiu kurimas kuriuos zaidejas gales pasirinkti
 Demolitionist = Character_Creator("Demolitionist", "Melee Damage", 8, 1)
 Demolitionist.add_skill("Explosive Blitz")
 Demolitionist.add_skill("Know Out the support")
@@ -65,7 +68,7 @@ Demolitionist.add_skill("Piston Punch")
 Demolitionist.add_skill("Windup")
 Demolitionist.add_skill("Implode")
 
-
+# testai
 player_tracker = PlayerTracker()
 
 
@@ -82,54 +85,74 @@ print("Player1 characters:", player1_characters)
 
 # GUI Section -------------------------------------------------------------------------
 
-app = CTk()
-app.geometry("1200x800")
-app.title("GloomHaven-Helper")
-app.resizable(width=False, height=False)
 
-set_appearance_mode("dark")
+
 
 # Starting Page
-project_logo = CTkImage(dark_image=Image.open("gloomhaven-logo.png"), size=(1000, 350))
-logo_label = CTkLabel(app, image=project_logo, text="")
-logo_label.place(relx=0.5, rely=0.25, anchor="center")
+class App(customtkinter.CTk):
+    def __init__(self):
+        
+        # Programos Atrodymas
+        super().__init__()
+        self.geometry("1200x800")
+        self.title("GloomHaven-Helper")
+        self.resizable(width=False, height=False)
+        set_appearance_mode("dark")
+        
+        # Paveikslai
+        project_logo = CTkImage(dark_image=Image.open("gloomhaven-logo.png"), size=(1000, 350))
+        
+        # Pirmas pradinis puslapis - Pradzia
 
-frame_1 = CTkFrame(master=app, fg_color="#e5d8ad", height=250, width=750, border_color="#e5aaa7", border_width=2)
-frame_1.pack(expand=True, fill="x", pady=200, padx=30, anchor="s")
+        
+        self.logo_label = CTkLabel(self, image=project_logo, text="")
+        self.logo_label.place(relx=0.5, rely=0.25, anchor="center")
 
-frame_2 = CTkFrame(master=frame_1, fg_color="#e5d8ad")
-frame_2.pack(side=TOP, expand=False, pady=10, padx=30)
+        self.frame_1 = CTkFrame(master=self, fg_color="#e5d8ad", height=250, width=750, border_color="#e5aaa7", border_width=2)
+        self.frame_1.pack(expand=True, fill="x", pady=200, padx=30, anchor="s")
 
-# Garamond
-desc_label = CTkLabel(master=frame_2, font=("Baskerville Old Face", 17, "bold"), text="Hello and welcome to gloomhaven helper. This app is intended to help you on your adventures by removing the need for character sheets", text_color="black")
-desc_label.pack(anchor="s", expand=True, pady=10, padx= 10)
+        self.frame_2 = CTkFrame(master=self.frame_1, fg_color="#e5d8ad")
+        self.frame_2.pack(side=TOP, expand=False, pady=10, padx=30)
 
-frame_3 = CTkFrame(master=frame_1, fg_color="#e5d8ad")
-frame_3.pack(side=BOTTOM, expand=False, pady=10, padx=10)
+        self.desc_label = CTkLabel(master=self.frame_2, font=("Baskerville Old Face", 17, "bold"), text="Hello and welcome to gloomhaven helper. This app is intended to help you on your adventures by removing the need for character sheets", text_color="black")
+        self.desc_label.pack(anchor="s", expand=True, pady=10, padx= 10)
 
-def click_NewGame():
-    print("new progress has been pressed")
+        self.frame_3 = CTkFrame(master=self.frame_1, fg_color="#e5d8ad")
+        self.frame_3.pack(side=BOTTOM, expand=False, pady=10, padx=10)
+        
+        self.New_game_btn = CTkButton(master=self.frame_3, font=("Baskerville Old Face", 18, "bold"), text="New Progress", command=self.click_NewGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+        self.New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
+
+        self.New_game_btn = CTkButton(master=self.frame_3, font=("Baskerville Old Face", 18, "bold"), text="Load Progress", command=self.click_LoadGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+        self.New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
+
+        self.New_game_btn = CTkButton(master=self.frame_3, font=("Baskerville Old Face", 18, "bold"), text="Quit App", command=self.click_QuitGame, height=50, fg_color="#9c4541", hover_color="#79312d")
+        self.New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=20, padx=30)
+
+
+
+    def click_NewGame(self):
+        print("new progress has been pressed")
+        self.frame_1.pack_forget()
+        self.logo_label.place_forget()
+        # Antras puslapis - New Game
+
+
+    def click_LoadGame(self):
+        print("Load progress has been pressed")
+        self.frame_1.pack_forget()
+        self.logo_label.place_forget()
+        # Trecias puslapis - Load Game
     
-def click_LoadGame():
-    print("Load progress has been pressed")
+    def click_QuitGame(self):
+        print("Quit App Has Been pressed")
+        self.quit()
+
+
     
-def click_QuitGame():
-    print("Quit App Has Been pressed")
-    app.quit()
-    
-    
+  
 
-New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="New Progress", command=click_NewGame, height=50, fg_color="#9c4541", hover_color="#79312d")
-New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
-
-New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="Load Progress", command=click_LoadGame, height=50, fg_color="#9c4541", hover_color="#79312d")
-New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=10, padx=30)
-
-New_game_btn = CTkButton(master=frame_3, font=("Baskerville Old Face", 18, "bold"), text="Quit App", command=click_QuitGame, height=50, fg_color="#9c4541", hover_color="#79312d")
-New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=20, padx=30)
-
-
-
+app = App()
 app.mainloop()
 
 
