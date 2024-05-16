@@ -98,13 +98,15 @@ class App(customtkinter.CTk):
         self.title("GloomHaven-Helper")
         self.resizable(width=False, height=False)
         set_appearance_mode("dark")
+        self.create_page1()
         
-        # Paveikslai
-        project_logo = CTkImage(dark_image=Image.open("gloomhaven-logo.png"), size=(1000, 350))
-        
-        # Pirmas pradinis puslapis - Pradzia
+# Pirmas pradinis puslapis - Pradzia
 
+    def create_page1(self):
         
+        project_logo = CTkImage(dark_image=Image.open("gloomhaven-logo.png"), size=(1000, 350))        
+
+
         self.logo_label = CTkLabel(self, image=project_logo, text="")
         self.logo_label.place(relx=0.5, rely=0.25, anchor="center")
 
@@ -129,24 +131,67 @@ class App(customtkinter.CTk):
         self.New_game_btn = CTkButton(master=self.frame_3, font=("Baskerville Old Face", 18, "bold"), text="Quit App", command=self.click_QuitGame, height=50, fg_color="#9c4541", hover_color="#79312d")
         self.New_game_btn.pack(side=LEFT, anchor="w", expand=True, pady=20, padx=30)
 
-
-
     def click_NewGame(self):
         print("new progress has been pressed")
         self.frame_1.pack_forget()
         self.logo_label.place_forget()
-        # Antras puslapis - New Game
-
+        self.create_page2()
 
     def click_LoadGame(self):
         print("Load progress has been pressed")
         self.frame_1.pack_forget()
         self.logo_label.place_forget()
-        # Trecias puslapis - Load Game
+        
     
     def click_QuitGame(self):
         print("Quit App Has Been pressed")
         self.quit()
+
+ # Antras puslapis - New Game How many players
+    def create_page2(self):
+        self.Players = "1"        
+
+        self.frame_1 = CTkFrame(master=self, fg_color="#e5d8ad", height=1200, width=750, border_color="#e5aaa7", border_width=2)
+        self.frame_1.pack(expand=True, fill="both", pady=50, padx=30, anchor="s")
+        
+        self.frame_2 = CTkFrame(master=self.frame_1, fg_color="#e5d8ad", height=1200, width=750, border_color="#e5aaa7", border_width=0)
+        self.frame_2.pack(expand=True, fill="x", pady=0, padx=30)
+        
+        self.desc_label = CTkLabel(master=self.frame_2, font=("Baskerville Old Face", 32, "bold"), text="For starters lets choose how many player will be playing", text_color="black")
+        self.desc_label.pack(anchor="s", expand=True, pady=10, padx= 10)    
+        
+        self.combobox_players = customtkinter.CTkComboBox(master=self.frame_2, values=["Solo Game", "2 Player Game", "3 Player Game",
+                                                                                       "4 Player Game"], font=("Baskerville Old Face", 22, "bold")
+                                                          , command=self.combobox_callback_players, width=500, fg_color="#e5d8ad", text_color="black",
+                                                          dropdown_font=("Baskerville Old Face", 22, "bold"))
+        self.combobox_players.set("Solo Game")
+        self.combobox_players.pack(expand=True, pady=10, padx= 10)      
+        
+        self.Next_btn_1 = CTkButton(master=self.frame_2, font=("Baskerville Old Face", 18, "bold"), text="Next", command=self.Next_btn_1, height=50, fg_color="#9c4541", hover_color="#79312d")
+        self.Next_btn_1.pack(side=LEFT, expand=True, pady=20, padx=30)
+        
+
+    
+    def combobox_callback_players(self, choice):
+        print(choice)
+        if choice == "Solo Game":
+            self.Players = 1
+        if choice == "2 Player Game":
+            self.Players = 2
+        if choice == "3 Player Game":
+            self.Players = 3
+        if choice == "4 Player Game":
+            self.Players = 4    
+    
+    def Next_btn_1(self):
+        print(self.Players)
+        
+        
+    
+
+# Trecias puslapis - Load Game
+    def create_page3(self):
+        pass
 
 
     
