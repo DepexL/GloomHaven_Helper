@@ -6,7 +6,7 @@ from customtkinter import*
 from PIL import Image
 import customtkinter
 
-# Žaidėjų ir žmogeliukų kūrimas
+# Žaidėjų ir žmogeliukų kūrimas - Funkcijos ir t.t.
 
 class PlayerTracker:
     _instance = None
@@ -173,7 +173,6 @@ class App(customtkinter.CTk):
 
     
     def combobox_callback_players(self, choice):
-        print(choice)
         if choice == "Solo Game":
             self.Players = 1
         if choice == "2 Player Game":
@@ -184,13 +183,43 @@ class App(customtkinter.CTk):
             self.Players = 4    
     
     def Next_btn_1(self):
-        print(self.Players)
+        print("Choose button has been pressed")
+        self.frame_1.pack_forget()
+        self.create_page3()
+
+# Trecias puslapis - Zaidejas ir Zmogeliukai
+    def create_page3(self):
+        self.frame_1 = CTkFrame(master=self, fg_color="#e5d8ad", height=1200, width=750, border_color="#e5aaa7", border_width=2)
+        self.frame_1.pack(expand=True, fill="both", pady=(50, 0), padx=30, anchor="n")  # Adjusted pady and anchor
+    
+        self.frame_2 = CTkFrame(master=self.frame_1, fg_color="#e5d8ad", height=1200, width=750, border_color="#e5aaa7", border_width=0)
+        self.frame_2.pack(expand=True, fill="x", pady=0, padx=30)
         
+        self.frame_3 = CTkFrame(master=self.frame_1, fg_color="black")
+        self.frame_3.place(relx=0.5, rely=0.30, anchor="n")  # Center vertically within frame_1
+    
+        self.desc_label = CTkLabel(master=self.frame_2, font=("Baskerville Old Face", 32, "bold"), text="Now Lets Create Players And Characters", text_color="black")
+        self.desc_label.pack(anchor="n", expand=True, pady=(10, 400), padx= 10)    
+
+        self.desc_label = CTkLabel(master=self.frame_3, font=("Baskerville Old Face", 22, "bold"), text="Player Name:", text_color="red")
+        self.desc_label.pack(side=LEFT, anchor="n", pady=20, padx=30)    
+        self.entry_name = CTkEntry(master=self.frame_3, placeholder_text="Start typing...")
+        self.btn_submit = CTkButton(master=self.frame_3, text="Submit", command=self.click_handler1)
+        self.entry_name.pack(side=LEFT, anchor="n", pady=20, padx=30)
+        self.btn_submit.pack(side=LEFT, anchor="n", pady=20, padx=30)
         
+        self.entry = CTkEntry(master=self.frame_3, placeholder_text="Start typing...")
+        self.btn5 = CTkButton(master=self.frame_3, text="Submit", command=self.click_handler1)
+        self.entry.pack(side=LEFT, anchor="n", pady=20, padx=30)
+        self.btn5.pack(side=LEFT, anchor="n", pady=20, padx=30)
+
+
+    def click_handler1(self):
+        print(f"Entered Value: {self.entry.get()}")
     
 
-# Trecias puslapis - Load Game
-    def create_page3(self):
+# x puslapis - Load Game
+    def create_page4(self):
         pass
 
 
