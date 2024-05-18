@@ -21,7 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Designs\ButtonDesignScript.py" />
+    <Compile Include="CharacterCreatorScript.py" />
     <Compile Include="GloomHaven_Helper.py" />
+    <Compile Include="PlayerTrackerScript.py" />
+    <Compile Include="RunProgram.py" />
+    <Compile Include="Designs\TextDesignScript.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Designs\" />
+    <Folder Include="App_Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
