@@ -94,17 +94,3 @@ Demolitionist.add_skill("Piston Punch")
 Demolitionist.add_skill("Windup")
 Demolitionist.add_skill("Implode")
 
-# testai
-player_tracker = PlayerTrackerScript.PlayerTracker()
-
-
-player_tracker.add_player("Player1")
-player_tracker.add_character("Player1", "Demolitionist")
-player_tracker.add_character("Player1", "Character2")
-
-
-player1_characters = player_tracker.get_characters("Player1")
-print("Player1 characters:", player1_characters)
-
-player_tracker.remove_character("Player1", "Demolitionist")
-print("Player1 characters:", player1_characters)

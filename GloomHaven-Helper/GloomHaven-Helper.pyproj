@@ -30,7 +30,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Designs\" />
-    <Folder Include="App_Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="savefile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
