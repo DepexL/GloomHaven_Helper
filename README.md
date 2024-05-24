@@ -70,9 +70,11 @@ Decorator:
 validate_level decorator checks if the character's level is at least 1 before executing the lvl_system method. If the level is sufficient, the method is executed as usual. Otherwise, a ValueError is raised indicating that the character's level is too low to perform the action.
 Decorator code:
 
+ ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/7b503f4f-319d-4b29-89af-faabe4e3813d)
+
  ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/4756001b-948f-45aa-896a-614ccba3afa2)
 
- ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/7b503f4f-319d-4b29-89af-faabe4e3813d)
+
 
 
 This, for example, works great because if were to use the level 0 system it would set character health to zero which would be bad.
