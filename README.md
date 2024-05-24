@@ -18,6 +18,7 @@ Leveling System (added functionality): The program implements a leveling system 
 OOP Implamentation:
 Polymorphisim:
 Overloading:
+
 ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/e244d112-ae66-4075-bd03-61368303b102)
 
 Usage:  Overloading occurs when multiple methods in the same class have the same name but different parameters. This allows each method to customize or extend the behavior of the mothod to suit their specific needs.
@@ -26,7 +27,9 @@ Usage:  Overloading occurs when multiple methods in the same class have the same
 Usage:  Overriding in my code is used by providing specific implementations of methods (lvl_system and add_skill) in each subclass (Voidwarden_class, Hatchet_class, RedGuard_class, Demolitionist_class) that override the implementations in the superclass (Character_Creator) or subclasses. This allows each subclass to customize or extend the behavior of the inherited methods to suit their specific needs.
 
 Overriding code parts:
+
 ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/c3ceac19-e9f0-48a2-a866-79c823782c1d)
+
 ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/c58bbde7-a833-4609-9d2b-d155b8d6ffd6)
 
  
@@ -49,6 +52,7 @@ Encapsulation:
 Usage: Each class (Character_Creator, Voidwarden_class, Hatchet_class, RedGuard_class, Demolitionist_class) encapsulates related attributes and methods into a cohesive unit representing different character types. The class definition defines the structure and behavior of objects created from that class.
 Design Paterns:
 Singleton:
+
 ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/b1997dfe-73d0-448d-84cc-962ca8740547)
 
 Benefits:
@@ -58,12 +62,14 @@ Global Access: Any part of the application can access the CharacterManager insta
 
 Prevents Duplicate Creation: Ensures that characters with the same name are not created multiple times, preventing duplication.
 Singleton code:
+
  ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/dfe58c23-d91b-4394-a892-6a4261ca8a4c)
 
 This application of the Singleton pattern provides a centralized and globally accessible way to manage character instances in Character Tracker application.
 Decorator:
 validate_level decorator checks if the character's level is at least 1 before executing the lvl_system method. If the level is sufficient, the method is executed as usual. Otherwise, a ValueError is raised indicating that the character's level is too low to perform the action.
 Decorator code:
+
  ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/4756001b-948f-45aa-896a-614ccba3afa2)
 
 This, for example, works great because if were to use the level 0 system it would set character health to zero which would be bad.
