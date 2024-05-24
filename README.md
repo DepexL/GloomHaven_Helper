@@ -53,7 +53,6 @@ Usage: Each class (Character_Creator, Voidwarden_class, Hatchet_class, RedGuard_
 Design Paterns:
 Singleton:
 
-![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/b1997dfe-73d0-448d-84cc-962ca8740547)
 
 Benefits:
 Centralized Management: The Singleton ensures that there is only one central point (CharacterManager) responsible for managing character instances.
