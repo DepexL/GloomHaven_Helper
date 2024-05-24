@@ -1,4 +1,10 @@
-# Sukurti Leveling sistema!!!!
+def validate_level(func):
+    def wrapper(self, *args, **kwargs):
+        if self.Level >= 1:  
+            return func(self, *args, **kwargs)
+        else:
+            raise ValueError("Character level is too low to perform this action.")
+    return wrapper
 
 class Character_Creator:
     def __init__(self, Char_name, Specialty, Health, Level):
@@ -14,12 +20,24 @@ class Character_Creator:
     def add_skill(self, skill_name):
         if skill_name not in self.Skills: 
             self.Skills.append(skill_name)
+        else:
+            print(f"{skill_name} already exists in the skills list.")
+    
+    @validate_level
+    def lvl_system(self):
+        self.Health = self.Health + self.Level
+        
+    def display_special(self):
+        return f"None"
         
 class Voidwarden_class(Character_Creator):
     def __init__(self, Char_name, Specialty, Health, Level, Mana):
         super().__init__(Char_name, Specialty, Health, Level)
-        self.Mana = Mana  # New attribute specific to Character_Class
+        self.Mana = Mana 
 
+    @validate_level
+    def lvl_system(self):
+        self.Health = self.Health + self.Level*2
 
     def add_skill(self, skill_name):
         if skill_name not in self.Skills: 
@@ -28,7 +46,7 @@ class Voidwarden_class(Character_Creator):
             print(f"{skill_name} already exists in the skills list.")
 
 
-    def display_mana(self):
+    def display_special(self):
         return f"Mana: {self.Mana}"
     
 class Hatchet_class(Character_Creator):
@@ -36,6 +54,9 @@ class Hatchet_class(Character_Creator):
         super().__init__(Char_name, Specialty, Health, Level)
         self.Stamina = Stamina 
 
+    @validate_level
+    def lvl_system(self):
+        self.Health = self.Health + self.Level
 
     def add_skill(self, skill_name):
         if skill_name not in self.Skills: 
@@ -44,14 +65,17 @@ class Hatchet_class(Character_Creator):
             print(f"{skill_name} already exists in the skills list.")
 
 
-    def display_mana(self):
-        return f"Mana: {self.Stamina}"
+    def display_special(self):
+        return f"Stamina: {self.Stamina}"
     
 class RedGuard_class(Character_Creator):
     def __init__(self, Char_name, Specialty, Health, Level, Rage):
         super().__init__(Char_name, Specialty, Health, Level)
         self.Rage = Rage 
 
+    @validate_level
+    def lvl_system(self):
+        self.Health = self.Health*self.Level
 
     def add_skill(self, skill_name):
         if skill_name not in self.Skills: 
@@ -60,14 +84,18 @@ class RedGuard_class(Character_Creator):
             print(f"{skill_name} already exists in the skills list.")
 
 
-    def display_mana(self):
-        return f"Mana: {self.Mana}"
+    def display_special(self):
+        return f"Rage: {self.Rage}"
     
 
 class Demolitionist_class(Character_Creator):
     def __init__(self, Char_name, Specialty, Health, Level, GunPowder):
         super().__init__(Char_name, Specialty, Health, Level)
         self.GunPowder = GunPowder  
+        
+    @validate_level
+    def lvl_system(self):
+        self.Health = self.Health + self.Level*1
 
 
     def add_skill(self, skill_name):
@@ -77,8 +105,8 @@ class Demolitionist_class(Character_Creator):
             print(f"{skill_name} already exists in the skills list.")
 
 
-    def display_mana(self):
-        return f"Mana: {self.Mana}"
+    def display_special(self):
+        return f"Gunpowder: {self.GunPowder}"
     
 
     

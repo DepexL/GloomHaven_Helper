@@ -1,6 +1,7 @@
-from customtkinter import*
+from customtkinter import *
 
 class btn_design():
+    @log_method
     def default_button(self, Text, frame, command, width=None):
         self.Text = Text
         self.frame = frame
