@@ -1,4 +1,4 @@
-a. What is your application?
+![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/a692e11b-8e5f-485e-82da-fc311e41655f)a. What is your application?
 The application, named "GloomHaven-Helper", is designed to assist players of the board game GloomHaven. It offers features to manage player progress, create and track characters, and provides a streamlined experience by eliminating the need for physical character sheets.
 
 b. How to run the program?
@@ -61,6 +61,7 @@ Global Access: Any part of the application can access the CharacterManager insta
 
 Prevents Duplicate Creation: Ensures that characters with the same name are not created multiple times, preventing duplication.
 Singleton code:
+![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/c44737b6-a161-4223-98fc-ff6d2bee09c0)
 
 
 This application of the Singleton pattern provides a centralized and globally accessible way to manage character instances in Character Tracker application.
