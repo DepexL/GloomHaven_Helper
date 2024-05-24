@@ -62,7 +62,6 @@ Global Access: Any part of the application can access the CharacterManager insta
 Prevents Duplicate Creation: Ensures that characters with the same name are not created multiple times, preventing duplication.
 Singleton code:
 
- ![image](https://github.com/DepexL/GloomHaven_Helper/assets/166698398/dfe58c23-d91b-4394-a892-6a4261ca8a4c)
 
 This application of the Singleton pattern provides a centralized and globally accessible way to manage character instances in Character Tracker application.
 Decorator:
